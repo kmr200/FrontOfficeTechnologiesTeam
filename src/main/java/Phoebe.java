@@ -2,22 +2,31 @@ public class Phoebe implements Runnable {
     @Override
     public void run() {
         synchronized (Main.lock) {
-            PhoebeWaitTurn(3);
+            PhoebeTurnWait(3);
 
             System.out.println("Phoebe: Hey.");
-            PhoebeGiveTurn(4);
+            PhoebeGiveTurn();
 
-            PhoebeWaitTurn(7);
+            PhoebeTurnWait(7);
             System.out.println("Phoebe: What were you modeling for?");
-            PhoebeGiveTurn(8);
+            PhoebeGiveTurn();
 
-            PhoebeWaitTurn(10);
+            PhoebeTurnWait(10);
             System.out.println("Phoebe: You know, the asthma guy was really cute.");
-            PhoebeGiveTurn(11);
+            PhoebeGiveTurn();
         }
     }
 
-    private void PhoebeWaitTurn(int turn) {
+    /**
+     * The private method *TurnWait has the same functionality across all
+     * runnable thread classes.
+     * Method locks current thread until its turn comes
+     * as described in the Main class.
+     * @param turn
+     * turn parameter being magical number should not be
+     * a big problem since it represents the line to be printed
+     */
+    private void PhoebeTurnWait(int turn) {
         while (Main.turn.get() != turn) {
             try {
                 Main.lock.wait();
@@ -27,8 +36,13 @@ public class Phoebe implements Runnable {
         }
     }
 
-    private void PhoebeGiveTurn(int turn) {
-        Main.turn.set(turn);
+    /**
+     * *GiveTurn has the same functionality across all the runnable thread classes. Method
+     * updates the value of the atomicInteger turn contained in the Main class and notifies
+     * other threads about changes in turn.
+     */
+    private void PhoebeGiveTurn() {
+        Main.turn.set(Main.turn.get() + 1);
         Main.lock.notifyAll();
     }
 }

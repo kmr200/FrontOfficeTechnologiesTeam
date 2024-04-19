@@ -2,36 +2,45 @@ public class Chandler implements Runnable {
     @Override
     public void run() {
         synchronized (Main.lock) {
-            ChandlerWaitTurn(2);
+            ChandlerTurnWait(2);
 
             System.out.println("Chandler: Hey.");
-            ChandlerGiveTurn(3);
+            ChandlerGiveTurn();
 
-            ChandlerWaitTurn(4);
+            ChandlerTurnWait(4);
 
             System.out.println("Chandler: And this from the cry-for-help department. Are you wearing makeup?");
-            ChandlerGiveTurn(5);
+            ChandlerGiveTurn();
 
-            ChandlerWaitTurn(6);
+            ChandlerTurnWait(6);
 
             System.out.println(
                     "Chandler: That's so funny, 'cause I was thinking you look more like Joey Tribbiani, man slash woman."
             );
-            ChandlerGiveTurn(7);
+            ChandlerGiveTurn();
 
-            ChandlerWaitTurn(11);
+            ChandlerTurnWait(11);
 
             System.out.println("Chandler: Do you know which one you're gonna be?");
-            ChandlerGiveTurn(12);
+            ChandlerGiveTurn();
 
-            ChandlerWaitTurn(13);
+            ChandlerTurnWait(13);
 
             System.out.println("Chandler: Good luck, man. I hope you get it.");
-            ChandlerGiveTurn(14);
+            ChandlerGiveTurn();
         }
     }
 
-    private void ChandlerWaitTurn(int turn) {
+    /**
+     * The private method *TurnWait has the same functionality across all
+     * runnable thread classes.
+     * Method locks current thread until its turn comes
+     * as described in the Main class.
+     * @param turn
+     * turn parameter being magical number should not be
+     * a big problem since it represents the line to be printed
+     */
+    private void ChandlerTurnWait(int turn) {
         while (Main.turn.get() != turn) {
             try {
                 Main.lock.wait();
@@ -41,8 +50,13 @@ public class Chandler implements Runnable {
         }
     }
 
-    private void ChandlerGiveTurn(int turn) {
-        Main.turn.set(turn);
+    /**
+     * *GiveTurn method has the same functionality across all the runnable thread classes. Method
+     * updates the value of the atomicInteger turn contained in the Main class and notifies
+     * other threads about changes in turn.
+     */
+    private void ChandlerGiveTurn() {
+        Main.turn.set(Main.turn.get() + 1);
         Main.lock.notifyAll();
     }
 }
