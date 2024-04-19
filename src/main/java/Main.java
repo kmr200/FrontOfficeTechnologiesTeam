@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
 
-    public static AtomicInteger turn = new AtomicInteger(0);
+    public static AtomicInteger turn = new AtomicInteger(1);
     public static final Object lock = new Object();
 
     public static void main(String[] args) {

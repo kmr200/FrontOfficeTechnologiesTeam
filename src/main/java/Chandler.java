@@ -2,32 +2,32 @@ public class Chandler implements Runnable {
     @Override
     public void run() {
         synchronized (Main.lock) {
-            ChandlerWaitTurn(1);
+            ChandlerWaitTurn(2);
 
             System.out.println("Chandler: Hey.");
-            ChandlerGiveTurn(2);
+            ChandlerGiveTurn(3);
 
-            ChandlerWaitTurn(3);
+            ChandlerWaitTurn(4);
 
             System.out.println("Chandler: And this from the cry-for-help department. Are you wearing makeup?");
-            ChandlerGiveTurn(4);
+            ChandlerGiveTurn(5);
 
-            ChandlerWaitTurn(5);
+            ChandlerWaitTurn(6);
 
             System.out.println(
                     "Chandler: That's so funny, 'cause I was thinking you look more like Joey Tribbiani, man slash woman."
             );
-            ChandlerGiveTurn(6);
+            ChandlerGiveTurn(7);
 
-            ChandlerWaitTurn(10);
+            ChandlerWaitTurn(11);
 
             System.out.println("Chandler: Do you know which one you're gonna be?");
-            ChandlerGiveTurn(11);
+            ChandlerGiveTurn(12);
 
-            ChandlerWaitTurn(12);
+            ChandlerWaitTurn(13);
 
             System.out.println("Chandler: Good luck, man. I hope you get it.");
-            ChandlerGiveTurn(13);
+            ChandlerGiveTurn(14);
         }
     }
 

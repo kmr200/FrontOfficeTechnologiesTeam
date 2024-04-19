@@ -2,12 +2,12 @@ public class Monica implements Runnable{
     @Override
     public void run() {
         synchronized (Main.lock) {
-            MonicaWaitTurn(8);
+            MonicaWaitTurn(9);
 
             System.out.println(
                     "Monica: Oh, wow, so you're gonna be one of those \"healthy, healthy, healthy guys\"?"
             );
-            MonicaGiveTurn(9);
+            MonicaGiveTurn(10);
         }
     }
 

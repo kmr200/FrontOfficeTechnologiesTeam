@@ -3,24 +3,24 @@ public class Joey implements Runnable {
     public void run() {
         synchronized (Main.lock) {
             System.out.println("Joey: Hey, hey.");
-            JoeyGiveTurn(1);
+            JoeyGiveTurn(2);
 
-            JoeyTurnWait(4);
+            JoeyTurnWait(5);
 
             System.out.println("Joey: Yes, I am. As of today, I am officially Joey Tribbiani, actor slash model.");
-            JoeyGiveTurn(5);
+            JoeyGiveTurn(6);
 
-            JoeyTurnWait(7);
+            JoeyTurnWait(8);
 
             System.out.println("Joey: You know those posters for the City Free Clinic?");
-            JoeyGiveTurn(8);
+            JoeyGiveTurn(9);
 
-            JoeyTurnWait(11);
+            JoeyTurnWait(12);
 
             System.out.println("Joey: No, but I hear lyme disease is open, so... (crosses fingers)");
-            JoeyGiveTurn(12);
+            JoeyGiveTurn(13);
 
-            JoeyTurnWait(13);
+            JoeyTurnWait(14);
 
             System.out.println("Joey: Thanks.");
         }

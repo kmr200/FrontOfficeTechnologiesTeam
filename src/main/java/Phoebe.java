@@ -2,18 +2,18 @@ public class Phoebe implements Runnable {
     @Override
     public void run() {
         synchronized (Main.lock) {
-            PhoebeWaitTurn(2);
+            PhoebeWaitTurn(3);
 
             System.out.println("Phoebe: Hey.");
-            PhoebeGiveTurn(3);
+            PhoebeGiveTurn(4);
 
-            PhoebeWaitTurn(6);
+            PhoebeWaitTurn(7);
             System.out.println("Phoebe: What were you modeling for?");
-            PhoebeGiveTurn(7);
+            PhoebeGiveTurn(8);
 
-            PhoebeWaitTurn(9);
+            PhoebeWaitTurn(10);
             System.out.println("Phoebe: You know, the asthma guy was really cute.");
-            PhoebeGiveTurn(10);
+            PhoebeGiveTurn(11);
         }
     }
 
