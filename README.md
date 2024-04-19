@@ -1,1 +1,1 @@
-<center>Classess containing solution can be found in **src/main/java**</center>
+Classess containing solution can be found in **src/main/java**
